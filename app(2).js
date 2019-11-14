@@ -23,10 +23,10 @@ function keyDownHandler(event) {
         fleche_gauche = true
     } else if (event.keyCode === 40) {
         console.log('TRIGGER bas DW')
-        fleche_haut = true
+        fleche_bas = true
     } else if (event.keyCode === 38) {
         console.log('TRIGGER haut DW')
-        fleche_bas= true
+        fleche_haut= true
     } 
 }
 
@@ -60,11 +60,11 @@ function draw(){
         snakeHead.x--
         snakeBody.x--
     } else if (fleche_bas === true){
-        snakeHead.y--
-        snakeBody.y--
-    } else if (fleche_haut === true){
         snakeHead.y++
         snakeBody.y++
+    } else if (fleche_haut === true){
+        snakeHead.y--
+        snakeBody.y--
     }
 }
     
