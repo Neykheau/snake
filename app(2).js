@@ -7,7 +7,7 @@ dx = WIDTH_BOARD
 dy =  0 
 
 canvas.style.backgroundColor = '#E1E1E1'
-banane
+
 let snakeBody = [
                 {x: 100, y:WIDTH_BOARD/2, taille: 10},
                 {x: 90, y: WIDTH_BOARD/2, taille: 10},
