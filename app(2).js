@@ -2,9 +2,34 @@ const canvas = document.getElementById('board')
 const ctx = canvas.getContext('2d')
 const WIDTH_BOARD = canvas.width
 const HEIGHT_BOARD = canvas.height
+let fleche_gauche = false
+let fleche_droite = false
+let fleche_bas = false
+let fleche_haut = false
+
 
 dx = WIDTH_BOARD
 dy =  0 
+
+
+document.addEventListener("keydown", keyDownHandler)
+function keyDownHandler(event) {
+    console.log('TRIGGER FUNCTION DW')
+    if (event.keyCode === 39) {
+        console.log('TRIGGER DROIT DW')
+        fleche_droite = true
+    } else if (event.keyCode === 37) {
+        console.log('TRIGGER GAUCHE DW')
+        fleche_gauche = true
+    } else if (event.keyCode === 40) {
+        console.log('TRIGGER bas DW')
+        fleche_bas = true
+    } else if (event.keyCode === 38) {
+        console.log('TRIGGER haut DW')
+        fleche_haut= true
+    } 
+}
+
 
 canvas.style.backgroundColor = '#E1E1E1'
 
@@ -24,8 +49,23 @@ function draw(){
     drawHead(snakeHead)
     moveHead()
     drawBody(snakeBody)
-    drawSnake()
+//     drawSnake()
     moveBody()
+  
+  
+    if (fleche_droite === true) {
+        snakeHead.x++
+        snakeBody.x++
+    } else if (fleche_gauche === true) {
+        snakeHead.x--
+        snakeBody.x--
+    } else if (fleche_bas === true){
+        snakeHead.y++
+        snakeBody.y++
+    } else if (fleche_haut === true){
+        snakeHead.y--
+        snakeBody.y--
+    }
 }
     
 
@@ -68,9 +108,9 @@ function drawBody(snakeBody){
 }
 
 // Afficher le corps entier du serpent
-function drawSnake() {  
-    snakeBody.forEach(drawBody);
-}
+// function drawSnake() {  
+//     snakeBody.forEach(drawBody);
+// }
 
 // Déplacement du corps du serpent
 function moveBody(){
